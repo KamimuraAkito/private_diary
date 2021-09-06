@@ -1,0 +1,13 @@
+python -m venv .env     //仮想環境の作成 
+.\.env\Scripts\Activate.ps1
+pip freeze  //リスト一覧表示
+pip install django==2.2.2
+django-admin startproject config . //プロジェクト作成
+python .\manage.py runserver    //djangoの起動
+python manage.py startapp diary //アプリケーション作成
+pip install pylint_django
+
+----------------------------------------------------------
+git
+README
+gitignore-->Python
