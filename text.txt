@@ -6,8 +6,10 @@ django-admin startproject config . //プロジェクト作成
 python .\manage.py runserver    //djangoの起動
 python manage.py startapp diary //アプリケーション作成
 pip install pylint_django //pylint-django==2.4.4などのinstall
-
+python manage.py runserver --settings=config.settings_dev //開発サーバーの起動
 ----------------------------------------------------------
 git
 README
 gitignore-->Python
+
+
