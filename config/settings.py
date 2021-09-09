@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'diary.apps.DiaryConfig',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -134,44 +135,46 @@ MESSAGE_TAGS = {
     messages.INFO : 'alert alert-info',
 }
 
-# setting.devの内容
-#ロギング設定
-LOGGING = {
-    'version': 1,  # 1固定
-    'disable_existing_loggers':False,
+# #AUTHの設定
+AUTH_USER_MODEL = 'accounts.CustomUser'
 
-    #ロガーの設定
-    'loggers' : {
-        #Djangoが利用するロガー
-        'django': {
-            'handlers':['console'],
-            'level': 'INFO',
-        },
-        #diaryアプリケーションが利用するロガー
-        'diary':{
-            'handlers':['console'],
-            'level':'DEBUG',
-        },
-    },
+# # setting.devの内容
+# #ロギング設定
+# LOGGING = {
+#     'version': 1,  # 1固定
+#     'disable_existing_loggers':False,
 
-    #ハンドラの設定
-    'handlers':{
-        'console':{
-            'level':'DEBUG',
-            'class':'logging.StreamHandler',
-            'formatter':'dev'
-        },
-    },
+#     #ロガーの設定
+#     'loggers' : {
+#         #Djangoが利用するロガー
+#         'django': {
+#             'handlers':['console'],
+#             'level': 'INFO',
+#         },
+#         #diaryアプリケーションが利用するロガー
+#         'diary':{
+#             'handlers':['console'],
+#             'level':'DEBUG',
+#         },
+#     },
 
-    #フォーマッタの設定
-    'formatters':{
-        'dev':{
-            'format':'\t'.join([
-                '%(asctime)s',
-                '[%(levelname)s]',
-                '%(pathname)s(Line:%(lineno)d)',
-            ])
-        },
-    }
+#     #ハンドラの設定
+#     'handlers':{
+#         'console':{
+#             'level':'DEBUG',
+#             'class':'logging.StreamHandler',
+#             'formatter':'dev'
+#         },
+#     },
 
-}
+#     #フォーマッタの設定
+#     'formatters':{
+#         'dev':{
+#             'format':'\t'.join([
+#                 '%(asctime)s',
+#                 '[%(levelname)s]',
+#                 '%(pathname)s(Line:%(lineno)d)',
+#             ])
+#         },
+#     }
+# }

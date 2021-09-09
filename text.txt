@@ -11,5 +11,3 @@ python manage.py runserver --settings=config.settings_dev //開発サーバー�
 git
 README
 gitignore-->Python
-
-
