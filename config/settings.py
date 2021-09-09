@@ -139,6 +139,7 @@ MESSAGE_TAGS = {
     messages.INFO : 'alert alert-info',
 }
 
+<<<<<<< HEAD
 #AUTHの設定
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
@@ -190,25 +191,77 @@ LOGGING = {
             'level':'DEBUG',
         },
     },
+=======
+# #AUTHの設定
+AUTH_USER_MODEL = 'accounts.CustomUser'
+>>>>>>> 637cc7e2b20dbc6de5db8ea1220c1b221e785217
 
-    #ハンドラの設定
-    'handlers':{
-        'console':{
-            'level':'DEBUG',
-            'class':'logging.StreamHandler',
-            'formatter':'dev'
-        },
-    },
+#プロジェクト設定ファイルの編集
+SITE_ID = 1
 
-    #フォーマッタの設定
-    'formatters':{
-        'dev':{
-            'format':'\t'.join([
-                '%(asctime)s',
-                '[%(levelname)s]',
-                '%(pathname)s(Line:%(lineno)d)',
-            ])
-        },
-    }
+AUTHENTICATION_BACKENDS = (
+    #一般ユーザー用
+    'allauth.account.auth_backends.AuthenticationBackend',
+    #管理者ユーザー用
+    'django.contrib.auth.backends.ModelBackend',
+)
 
-}
+#メールアドレス認証に変更する設定
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_USERNAME_REQUIRED = False
+
+#サインアップにメールアドレス確認をはさむよう設定
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_REQUIRED = False
+
+# #ログイン/ログアウト後の遷移先を決定
+# LOGIN_REDIRECT_URL = 'diary:index'
+# ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
+
+# #ログアウトリンクのクリック一発でログアウトする設定
+# ACCOUNT_LOGOUT_ON_GET = True
+
+# ACCOUNT_EMAIL_SUBJECT_PREFIX = ''
+
+# DEFAULT_FROM_EMAIL = 'admin@example.com'
+
+# # setting.devの内容
+# #ロギング設定
+# LOGGING = {
+#     'version': 1,  # 1固定
+#     'disable_existing_loggers':False,
+
+#     #ロガーの設定
+#     'loggers' : {
+#         #Djangoが利用するロガー
+#         'django': {
+#             'handlers':['console'],
+#             'level': 'INFO',
+#         },
+#         #diaryアプリケーションが利用するロガー
+#         'diary':{
+#             'handlers':['console'],
+#             'level':'DEBUG',
+#         },
+#     },
+
+#     #ハンドラの設定
+#     'handlers':{
+#         'console':{
+#             'level':'DEBUG',
+#             'class':'logging.StreamHandler',
+#             'formatter':'dev'
+#         },
+#     },
+
+#     #フォーマッタの設定
+#     'formatters':{
+#         'dev':{
+#             'format':'\t'.join([
+#                 '%(asctime)s',
+#                 '[%(levelname)s]',
+#                 '%(pathname)s(Line:%(lineno)d)',
+#             ])
+#         },
+#     }
+# }
