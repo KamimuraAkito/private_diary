@@ -42,6 +42,10 @@ INSTALLED_APPS = [
 
     'diary.apps.DiaryConfig',
     'accounts.apps.AccountsConfig',
+
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
 ]
 
 MIDDLEWARE = [
@@ -137,6 +141,35 @@ MESSAGE_TAGS = {
 
 # #AUTHの設定
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
+#プロジェクト設定ファイルの編集
+SITE_ID = 1
+
+AUTHENTICATION_BACKENDS = (
+    #一般ユーザー用
+    'allauth.account.auth_backends.AuthenticationBackend',
+    #管理者ユーザー用
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+#メールアドレス認証に変更する設定
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_USERNAME_REQUIRED = False
+
+#サインアップにメールアドレス確認をはさむよう設定
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_REQUIRED = False
+
+# #ログイン/ログアウト後の遷移先を決定
+# LOGIN_REDIRECT_URL = 'diary:index'
+# ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
+
+# #ログアウトリンクのクリック一発でログアウトする設定
+# ACCOUNT_LOGOUT_ON_GET = True
+
+# ACCOUNT_EMAIL_SUBJECT_PREFIX = ''
+
+# DEFAULT_FROM_EMAIL = 'admin@example.com'
 
 # # setting.devの内容
 # #ロギング設定
