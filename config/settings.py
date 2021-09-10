@@ -157,16 +157,20 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_EMAIL_REQUIRED = True
 
-# #ログイン/ログアウト後の遷移先を決定
-# LOGIN_REDIRECT_URL = 'diary:index'
-# ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
+#ログイン/ログアウト後の遷移先を決定
+LOGIN_REDIRECT_URL = 'diary:index'
+ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
 
-# #ログアウトリンクのクリック一発でログアウトする設定
-# ACCOUNT_LOGOUT_ON_GET = True
+#ログアウトリンクのクリック一発でログアウトする設定
+ACCOUNT_LOGOUT_ON_GET = True
 
-# ACCOUNT_EMAIL_SUBJECT_PREFIX = ''
+ACCOUNT_EMAIL_SUBJECT_PREFIX = ''
 
-# DEFAULT_FROM_EMAIL = 'admin@example.com'
+DEFAULT_FROM_EMAIL = 'admin@example.com'
+
+#メディアファイル
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 # # setting.devの内容
 # #ロギング設定
