@@ -5,6 +5,7 @@ from django.db import models
 # Create your models here.
 class Diary(models.Model):
 
+    #日記モデル
     user = models.ForeignKey(CustomUser, verbose_name='ユーザー',
     on_delete=models.PROTECT)
     title = models.CharField(verbose_name='タイトル',max_length=40)
@@ -24,5 +25,5 @@ class Diary(models.Model):
     class Meta:
         verbose_name_plural = 'Diary'
 
-        def __str__(self):
-            return self.title
+    def __str__(self):
+        return self.title

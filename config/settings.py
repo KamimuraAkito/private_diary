@@ -172,6 +172,9 @@ DEFAULT_FROM_EMAIL = 'admin@example.com'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+#ログイン直後のリダイレクト先の設定
+LOGIN_REDIRECT_URL = 'diary:diary_list'
+
 # # setting.devの内容
 # #ロギング設定
 # LOGGING = {
