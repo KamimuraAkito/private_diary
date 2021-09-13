@@ -14,9 +14,11 @@ logger = logging.getLogger(__name__)
 
 # Create your views here.
 class IndexView(generic.TemplateView):
+    """IndexView"""
     template_name = "index.html"
 
 class InquiryView(generic.FormView):
+    """InquiryView"""
     template_name = "inquiry.html"
     form_class = InquiryForm
     success_url = reverse_lazy('diary:inquiry')
@@ -27,8 +29,8 @@ class InquiryView(generic.FormView):
         logger.info('Inquiry sent by {}'.format(form.cleaned_data['name']))
         return super().form_valid(form)
 
-#DiaryList
 class DiaryListView(LoginRequiredMixin, generic.ListView):
+    """DiaryList"""
     model = Diary
     template_name = 'diary_list.html'
     paginate_by = 2
@@ -37,14 +39,15 @@ class DiaryListView(LoginRequiredMixin, generic.ListView):
         diaries = Diary.objects.filter(user=self.request.user).order_by('-created_at')
         return diaries
 
-#Detail
+
 class DiaryDetailView(LoginRequiredMixin, generic.DetailView):
+    """Detail"""
     model = Diary
     template_name = 'diary_detail.html'
-    pk_url_kwarg = 'id'
 
-#Create
+
 class DiaryCreateView(LoginRequiredMixin,generic.CreateView):
+    """CREATE"""
     model = Diary
     template_name = 'diary_create.html'
     form_class = DiaryCreateForm
@@ -61,7 +64,9 @@ class DiaryCreateView(LoginRequiredMixin,generic.CreateView):
         messages.error(self.request, "日記の作成に失敗しました。")
         return super().form_invalid(form)
 
+
 class DiaryUpdateView(LoginRequiredMixin, generic.UpdateView):
+    """Update"""
     model = Diary
     template_name = 'diary_update.html'
     form_class = DiaryCreateForm
@@ -77,9 +82,8 @@ class DiaryUpdateView(LoginRequiredMixin, generic.UpdateView):
         messages.error(self.request, "日記の更新に失敗しました。")
         return super().form_invalid(form)
 
-
-
 class DiaryDeletelView(LoginRequiredMixin, generic.DeleteView):
+    """Delete"""
     model = Diary
     template_name = 'diary_delete.html'
     success_url = reverse_lazy('diary:diary_list')
